@@ -1,10 +1,9 @@
 
 
-provider "aws" {
-    region = "us-east-2"
+locals {
+    rendered = templatefile("./example.tpl", { name = "mhamir", number = 7})
 }
 
-resource "aws_iam_policy" "my_bucket_policy-new" {
-    name = "list-buckets-policy-new"
-    policy = file("./policy.iam")
+output "rendered_template" {
+    value = local.rendered
 }
