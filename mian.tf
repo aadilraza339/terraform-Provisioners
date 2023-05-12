@@ -1,9 +1,3 @@
-
-
-locals {
-    rendered = templatefile("./example.tpl", { name = "mhamir", number = 7})
-}
-
 output "rendered_template" {
-    value = local.rendered
+    value = templatefile("./backends.tpl", { port = 8080, ip_addrs = ["10.0.0.1", "10.0.0.2"] })
 }
